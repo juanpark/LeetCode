@@ -1,3 +1,7 @@
+// 3 -2 -4 -9  0    3  7 13 8  -3
+// 3  1 -3 -12 -12 -9 -2 11 19 16
+//    1 -6 -13  -9  3 10 20 21 15
+
 import java.io.*;
 
 class Main {
@@ -17,20 +21,13 @@ class Main {
 
     public static void main(String[] args) throws IOException {
         int N = nextInt(), K = nextInt();
-        int[] arr = new int[N];
-        for (int i = 0; i < N; i++) {
-            arr[i] = nextInt();
-        }
+        int[] arr = new int[N + 1];
 
-        int len = N - K, max = Integer.MIN_VALUE;
-        for (int i = 0; i <= len; i++) {
-            int sum = 0;
-            for (int j = i; j < i + K; j++) {
-                sum += arr[j];
-            }
-            max = Math.max(max, sum);
+        int max = Integer.MIN_VALUE;
+        for (int i = 1; i <= N; i++) {
+            arr[i] = arr[i - 1] + nextInt();
+            if (i - K >= 0) max = Math.max(max, arr[i] - arr[i - K]);
         }
-
         System.out.print(max);
     }
 }
