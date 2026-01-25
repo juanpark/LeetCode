@@ -5,30 +5,15 @@ class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
 
+        StringBuilder thick = new StringBuilder("@@@@@".repeat(N));
+        StringBuilder thin = new StringBuilder("@".repeat(N));
         StringBuilder sb = new StringBuilder();
-        drawLine(N, sb);
-        drawSingle(N, sb);
-        drawLine(N, sb);
-        drawSingle(N, sb);
-        drawSingle(N, sb);
+
+        for (int r = 0; r < 5; r++) {
+            for (int line = 0; line < N; line++) {
+                sb.append(r == 0 || r == 2 ? thick : thin).append('\n');
+            }
+        }
         System.out.print(sb);
-    }
-
-    static void drawLine(int N, StringBuilder sb) {
-        for (int r = 0; r < N; r++) {
-            for (int c = 0; c < N; c++) {
-                sb.append("@@@@@");
-            }
-            sb.append('\n');
-        }
-    }
-
-    static void drawSingle(int N, StringBuilder sb) {
-        for (int r = 0; r < N; r++) {
-            for (int c = 0; c < N; c++) {
-                sb.append("@");
-            }
-            sb.append('\n');
-        }
     }
 }
