@@ -1,0 +1,14 @@
+import java.io.*;
+class Main {
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int N = Integer.parseInt(br.readLine());
+		char[] word = br.readLine().toCharArray();
+		
+		StringBuilder sb = new StringBuilder();
+		for (char c : word) {
+			sb.append(c < 'a' ? (char)(c - 'A' + 'a') : (char)(c - 'a' + 'A'));
+		}
+		System.out.println(sb);
+	}
+}
