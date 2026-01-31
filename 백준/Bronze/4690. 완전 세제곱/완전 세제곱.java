@@ -6,9 +6,9 @@ public class Main {
         for (int i = 1; i <= N; i++) {
             int cubeA = i * i * i;
 
-            for (int b = 2; b <= N; b++) {
-                for (int c = b + 1; c <= N; c++) {
-                    for (int d = c + 1; d <= N; d++) {
+            for (int b = 2; b < i; b++) {
+                for (int c = b + 1; c < i; c++) {
+                    for (int d = c + 1; d < i; d++) {
                         int cubeB = b * b * b;
                         int cubeC = c * c * c;
                         int cubeD = d * d * d;
