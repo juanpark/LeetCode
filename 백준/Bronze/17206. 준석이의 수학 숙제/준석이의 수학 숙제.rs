@@ -1,4 +1,5 @@
 use std::io::{self, Read};
+use std::fmt::Write;
 
 fn main() {
     let mut buffer = String::new();
@@ -8,20 +9,19 @@ fn main() {
     let mut out = String::new();
     let t: usize = it.next().unwrap().parse().unwrap();
     for _ in 0..t {
-        let n: i32 = it.next().unwrap().parse().unwrap();
-        let k3: i32 = n / 3;
-        let k7: i32 = n / 7;
-        let k21: i32 = n / 21;
+        let n: i64 = it.next().unwrap().parse().unwrap();
+        let k3 = n / 3;
+        let k7 = n / 7;
+        let k21 = n / 21;
         let mut sum: i64 = 0;
-        sum = sum + (arith_series(k3) * 3) as i64;
-        sum = sum + (arith_series(k7) * 7) as i64;
-        sum = sum - (arith_series(k21) * 21) as i64;
-        out.push_str(&sum.to_string());
-        out.push('\n');
+        sum = sum + (arith_series(k3) * 3);
+        sum = sum + (arith_series(k7) * 7);
+        sum = sum - (arith_series(k21) * 21);
+        writeln!(out, "{}", sum).unwrap();
     }
     print!("{out}");
 }
 
-fn arith_series(k: i32) -> i32 {
+fn arith_series(k: i64) -> i64 {
     return k * (k + 1) / 2
 }
